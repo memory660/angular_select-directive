@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppComponent {
 
   // Done for demo purpose only. Use a service to talk to APIs
   post(): Function {
-    return () => {
+    return (): Observable<any> => {
       return this.http.post('https://jsonplaceholder.typicode.com/posts', {});
     };
   }
