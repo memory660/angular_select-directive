@@ -35,9 +35,9 @@ export class SelectSaveDirective {
   onChange() {
     if (this.observableFn instanceof Function) {
       const element: HTMLElement = this.elRef.nativeElement;
-
       this.addLoader(element);
-      const changeObservable: Observable<unknown> = this.observableFn();
+
+      const changeObservable = this.observableFn() as Observable<any>;
       changeObservable.subscribe(
         (_) => {
           this.handleSuccessCase(element);
@@ -72,6 +72,7 @@ export class SelectSaveDirective {
   addLoader(element: HTMLElement) {
     this.addBackground(element, LOADING_ICON, 20);
   }
+
   addSuccess(element: HTMLElement) {
     this.addBackground(element, SUCCESS_ICON, 20);
   }
